@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		C9BF50CB2526C596008BA0A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50CA2526C596008BA0A1 /* AppDelegate.swift */; };
 		C9BF50CD2526C596008BA0A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50CC2526C596008BA0A1 /* SceneDelegate.swift */; };
-		C9BF50CF2526C596008BA0A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50CE2526C596008BA0A1 /* ViewController.swift */; };
+		C9BF50CF2526C596008BA0A1 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50CE2526C596008BA0A1 /* TaskListViewController.swift */; };
 		C9BF50D22526C596008BA0A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BF50D02526C596008BA0A1 /* Main.storyboard */; };
 		C9BF50D42526C59A008BA0A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BF50D32526C59A008BA0A1 /* Assets.xcassets */; };
 		C9BF50D72526C59A008BA0A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BF50D52526C59A008BA0A1 /* LaunchScreen.storyboard */; };
 		C9BF50E22526C59A008BA0A1 /* KadaiTodoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50E12526C59A008BA0A1 /* KadaiTodoAppTests.swift */; };
 		C9BF50ED2526C59A008BA0A1 /* KadaiTodoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50EC2526C59A008BA0A1 /* KadaiTodoAppUITests.swift */; };
 		C9BF50FB2526F34F008BA0A1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */; };
+		C9BF50FD2529A4F1008BA0A1 /* TaskEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50FC2529A4F1008BA0A1 /* TaskEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 		C9BF50C72526C596008BA0A1 /* KadaiTodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KadaiTodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BF50CA2526C596008BA0A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9BF50CC2526C596008BA0A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C9BF50CE2526C596008BA0A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C9BF50CE2526C596008BA0A1 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		C9BF50D12526C596008BA0A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9BF50D32526C59A008BA0A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9BF50D62526C59A008BA0A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		C9BF50EC2526C59A008BA0A1 /* KadaiTodoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KadaiTodoAppUITests.swift; sourceTree = "<group>"; };
 		C9BF50EE2526C59A008BA0A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		C9BF50FC2529A4F1008BA0A1 /* TaskEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +105,13 @@
 			children = (
 				C9BF50CA2526C596008BA0A1 /* AppDelegate.swift */,
 				C9BF50CC2526C596008BA0A1 /* SceneDelegate.swift */,
-				C9BF50CE2526C596008BA0A1 /* ViewController.swift */,
+				C9BF50CE2526C596008BA0A1 /* TaskListViewController.swift */,
 				C9BF50D02526C596008BA0A1 /* Main.storyboard */,
 				C9BF50D32526C59A008BA0A1 /* Assets.xcassets */,
 				C9BF50D52526C59A008BA0A1 /* LaunchScreen.storyboard */,
 				C9BF50D82526C59A008BA0A1 /* Info.plist */,
 				C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */,
+				C9BF50FC2529A4F1008BA0A1 /* TaskEditorViewController.swift */,
 			);
 			path = KadaiTodoApp;
 			sourceTree = "<group>";
@@ -261,10 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BF50CF2526C596008BA0A1 /* ViewController.swift in Sources */,
+				C9BF50CF2526C596008BA0A1 /* TaskListViewController.swift in Sources */,
 				C9BF50CB2526C596008BA0A1 /* AppDelegate.swift in Sources */,
 				C9BF50FB2526F34F008BA0A1 /* ViewModel.swift in Sources */,
 				C9BF50CD2526C596008BA0A1 /* SceneDelegate.swift in Sources */,
+				C9BF50FD2529A4F1008BA0A1 /* TaskEditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  TaskEditorViewController.swift
 //  KadaiTodoApp
 //
-//  Created by 松田尚也 on 2020/10/02.
+//  Created by 松田尚也 on 2020/10/04.
 //
 
 import UIKit
 import Combine
 
-class TaskListViewController: UIViewController {
+class TaskEditorViewController: UIViewController {
     @IBOutlet var label: UILabel!
     let viewModel = ViewModel()
     
