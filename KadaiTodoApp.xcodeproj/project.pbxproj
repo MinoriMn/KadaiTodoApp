@@ -15,6 +15,7 @@
 		C9BF50D72526C59A008BA0A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BF50D52526C59A008BA0A1 /* LaunchScreen.storyboard */; };
 		C9BF50E22526C59A008BA0A1 /* KadaiTodoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50E12526C59A008BA0A1 /* KadaiTodoAppTests.swift */; };
 		C9BF50ED2526C59A008BA0A1 /* KadaiTodoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50EC2526C59A008BA0A1 /* KadaiTodoAppUITests.swift */; };
+		C9BF50FB2526F34F008BA0A1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C9BF50E82526C59A008BA0A1 /* KadaiTodoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KadaiTodoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BF50EC2526C59A008BA0A1 /* KadaiTodoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KadaiTodoAppUITests.swift; sourceTree = "<group>"; };
 		C9BF50EE2526C59A008BA0A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				C9BF50D32526C59A008BA0A1 /* Assets.xcassets */,
 				C9BF50D52526C59A008BA0A1 /* LaunchScreen.storyboard */,
 				C9BF50D82526C59A008BA0A1 /* Info.plist */,
+				C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */,
 			);
 			path = KadaiTodoApp;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			files = (
 				C9BF50CF2526C596008BA0A1 /* ViewController.swift in Sources */,
 				C9BF50CB2526C596008BA0A1 /* AppDelegate.swift in Sources */,
+				C9BF50FB2526F34F008BA0A1 /* ViewModel.swift in Sources */,
 				C9BF50CD2526C596008BA0A1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
