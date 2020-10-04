@@ -103,15 +103,14 @@
 		C9BF50C92526C596008BA0A1 /* KadaiTodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				C9BF50FF2529A6B3008BA0A1 /* ViewModel */,
+				C9BF50FE2529A688008BA0A1 /* View */,
 				C9BF50CA2526C596008BA0A1 /* AppDelegate.swift */,
 				C9BF50CC2526C596008BA0A1 /* SceneDelegate.swift */,
-				C9BF50CE2526C596008BA0A1 /* TaskListViewController.swift */,
 				C9BF50D02526C596008BA0A1 /* Main.storyboard */,
 				C9BF50D32526C59A008BA0A1 /* Assets.xcassets */,
 				C9BF50D52526C59A008BA0A1 /* LaunchScreen.storyboard */,
 				C9BF50D82526C59A008BA0A1 /* Info.plist */,
-				C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */,
-				C9BF50FC2529A4F1008BA0A1 /* TaskEditorViewController.swift */,
 			);
 			path = KadaiTodoApp;
 			sourceTree = "<group>";
@@ -132,6 +131,23 @@
 				C9BF50EE2526C59A008BA0A1 /* Info.plist */,
 			);
 			path = KadaiTodoAppUITests;
+			sourceTree = "<group>";
+		};
+		C9BF50FE2529A688008BA0A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9BF50CE2526C596008BA0A1 /* TaskListViewController.swift */,
+				C9BF50FC2529A4F1008BA0A1 /* TaskEditorViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C9BF50FF2529A6B3008BA0A1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9BF50FA2526F34F008BA0A1 /* ViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
