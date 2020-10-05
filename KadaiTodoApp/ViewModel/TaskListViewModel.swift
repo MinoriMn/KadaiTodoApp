@@ -7,6 +7,6 @@
 
 import Combine
 
-class ViewModel {
+class TaskListViewModel {
     @Published var labelText: String = "DEBUG"
 }
