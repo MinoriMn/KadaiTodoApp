@@ -25,7 +25,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uih-hS-PlF" kind="showDetail" id="AnL-Xm-9SX"/>
+                                    <action selector="onTapNewTaskButton:" destination="BYZ-38-t0r" eventType="touchDown" id="FKh-qB-yJu"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kdh-S6-ayx">
@@ -47,6 +47,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="taskLTableView" destination="Kdh-S6-ayx" id="OXt-IC-ppJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,18 +59,18 @@
         <scene sceneID="l72-1T-Qkr">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYS-QU-lDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController title="TaskEditor" id="uih-hS-PlF" customClass="TaskEditorViewController" customModule="KadaiTodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskEditor" title="TaskEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uih-hS-PlF" customClass="TaskEditorViewController" customModule="KadaiTodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oKc-sl-Nzq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TItle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-sA-e5q">
-                                <rect key="frame" x="20" y="76" width="374" height="34"/>
+                                <rect key="frame" x="20" y="108" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Zt-Cw-pOj">
-                                <rect key="frame" x="20" y="728" width="183" height="60"/>
+                                <rect key="frame" x="20" y="782" width="183" height="60"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="T2E-rv-Sdn"/>
@@ -75,23 +78,29 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onTapCancelButton:" destination="uih-hS-PlF" eventType="touchDown" id="ky0-j1-Xrj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnP-BZ-I3r">
-                                <rect key="frame" x="211" y="728" width="183" height="60"/>
+                                <rect key="frame" x="211" y="782" width="183" height="60"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add">
+                                <state key="normal" title="OK">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onTapOKButton:" destination="uih-hS-PlF" eventType="touchDown" id="LEJ-oZ-ljj"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Detail" translatesAutoresizingMaskIntoConstraints="NO" id="PwI-cd-Njp">
-                                <rect key="frame" x="20" y="130" width="374" height="578"/>
+                                <rect key="frame" x="20" y="162" width="374" height="600"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afl-KJ-i0Q">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="TaskEditor" id="cln-Mc-N6T"/>
                                 </items>
@@ -121,6 +130,10 @@
                         <viewLayoutGuide key="safeArea" id="a96-ec-zdC"/>
                     </view>
                     <navigationItem key="navigationItem" id="Sc2-XD-0AQ"/>
+                    <connections>
+                        <outlet property="detailTextView" destination="PwI-cd-Njp" id="OJ6-IL-Ofo"/>
+                        <outlet property="titleTextField" destination="oHZ-sA-e5q" id="7gC-bJ-vds"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="956" y="131"/>
