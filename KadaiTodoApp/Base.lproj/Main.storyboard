@@ -31,6 +31,43 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kdh-S6-ayx">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="150" id="Cbx-6y-VKa" customClass="TaskTableViewCell" customModule="KadaiTodoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cbx-6y-VKa" id="qYJ-ju-og6">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-ue-RfG">
+                                                    <rect key="frame" x="10" y="10" width="394" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="528-MI-ir4">
+                                                    <rect key="frame" x="20" y="84" width="374" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="528-MI-ir4" firstAttribute="top" secondItem="Coi-ue-RfG" secondAttribute="bottom" constant="5" id="2on-FB-f4X"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="528-MI-ir4" secondAttribute="bottom" constant="10" id="DB1-Sk-tnh"/>
+                                                <constraint firstItem="Coi-ue-RfG" firstAttribute="top" secondItem="qYJ-ju-og6" secondAttribute="top" constant="10" id="Ngu-Lu-ofY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="528-MI-ir4" secondAttribute="trailing" id="Rnb-Ds-1bg"/>
+                                                <constraint firstItem="528-MI-ir4" firstAttribute="leading" secondItem="qYJ-ju-og6" secondAttribute="leadingMargin" id="c7v-AB-uB6"/>
+                                                <constraint firstItem="Coi-ue-RfG" firstAttribute="leading" secondItem="qYJ-ju-og6" secondAttribute="leading" constant="10" id="dc3-rt-plJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Coi-ue-RfG" secondAttribute="trailing" constant="10" id="nPM-FH-vPg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailText" destination="528-MI-ir4" id="ZYU-Li-QcG"/>
+                                            <outlet property="titleText" destination="Coi-ue-RfG" id="Zfe-c6-lIy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -48,7 +85,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="taskLTableView" destination="Kdh-S6-ayx" id="OXt-IC-ppJ"/>
+                        <outlet property="taskList" destination="Kdh-S6-ayx" id="H4j-aY-uhh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -58,7 +95,6 @@
         <!--TaskEditor-->
         <scene sceneID="l72-1T-Qkr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HYS-QU-lDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="TaskEditor" title="TaskEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uih-hS-PlF" customClass="TaskEditorViewController" customModule="KadaiTodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oKc-sl-Nzq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -135,6 +171,7 @@
                         <outlet property="titleTextField" destination="oHZ-sA-e5q" id="7gC-bJ-vds"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HYS-QU-lDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="956" y="131"/>
         </scene>
