@@ -8,8 +8,8 @@
 import UIKit
 import Combine
 
-class ViewController: UIViewController {
-    var label: UILabel!
+class TaskListViewController: UIViewController {
+    @IBOutlet var label: UILabel!
     let viewModel = ViewModel()
     
     private var cancellables = Set<AnyCancellable>()
@@ -17,15 +17,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        label = UILabel()
-        label.frame = CGRect(x:100, y:200, width:160, height:30)
-        self.view.addSubview(label)
+//        label = UILabel()
+//        label.frame = CGRect(x:100, y:200, width:160, height:30)
+//        self.view.addSubview(label)
         
-        viewModel.$labelText
-            .map({ Optional($0) })
-            .receive(on: DispatchQueue.main)
-            .assign(to: \UILabel.text, on:label)
-            .store(in: &cancellables)
+//        viewModel.$labelText
+//            .map({ Optional($0) })
+//            .receive(on: DispatchQueue.main)
+//            .assign(to: \UILabel.text, on:label)
+//            .store(in: &cancellables)
     }
 
 
