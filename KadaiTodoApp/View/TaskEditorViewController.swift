@@ -14,6 +14,8 @@ class TaskEditorViewController: UIViewController, ViewBase {
 //    @IBOutlet var cancellButton: UIButton!
 //    @IBOutlet var okButton: UIButton!
     
+    var cancellables = Set<AnyCancellable>()
+
     typealias ViewModel = TaskEditorViewModel
     let viewModel: ViewModel = TaskEditorViewModel()
 

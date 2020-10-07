@@ -10,10 +10,5 @@ import Combine
 protocol ViewBase {
     associatedtype ViewModel: ViewModelBase
     var viewModel: ViewModel { get }
-}
-
-extension ViewBase {
-    var cancellables: Set<AnyCancellable> {
-        return Set<AnyCancellable>()
-    }
+    var cancellables: Set<AnyCancellable> { get }
 }

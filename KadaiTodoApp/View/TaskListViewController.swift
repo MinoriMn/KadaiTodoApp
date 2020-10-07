@@ -7,8 +7,11 @@
 
 import UIKit
 import Combine
+import CombineDataSources
 
 class TaskListViewController: UIViewController, ViewBase {
+    var cancellables = Set<AnyCancellable>()
+
     @IBOutlet var taskList: UITableView!
 //    @IBOutlet var newTaskButton: UIButton!
     
