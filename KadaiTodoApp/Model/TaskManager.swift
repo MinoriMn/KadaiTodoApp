@@ -11,7 +11,7 @@ import Combine
 final class TaskManager: TaskManagerProtocol{
     static let shared = TaskManager()
     
-    @Published var tasks = PassthroughSubject<[Task], Never>()
+    var tasks = PassthroughSubject<[Task], Never>()
     
     private init() {
         loadTasksFromDB()
@@ -19,7 +19,6 @@ final class TaskManager: TaskManagerProtocol{
     
     private func loadTasksFromDB(){
         //TODO: storageからのTaskデータのロード
-        //DEBUG
         var _task: [Task] = []
         
         let tableData = ["水戸駅", "偕楽園駅", "日立駅", "土浦駅", "つくば駅", "研究学園駅"]
@@ -45,7 +44,7 @@ protocol TaskManagerProtocol {
     var tasks: PassthroughSubject<[Task], Never> { get set }
 }
 
-struct Task {
+struct Task: Hashable {
     let creationTime: Date!
     var title: String = ""
     var detail: String = ""
