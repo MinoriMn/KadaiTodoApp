@@ -62,9 +62,6 @@ class TaskEditorViewController: UIViewController, ViewBase {
         }, receiveValue: { tasks in
             self.dismiss(animated: true, completion: nil)
         })
-        
-        //TODO: update task
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

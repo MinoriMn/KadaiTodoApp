@@ -37,8 +37,4 @@ class TaskEditorViewModel: ViewModelBase{
         })
         .eraseToAnyPublisher()
     }
-    
-    func addNewTask(title: String, detail: String) {
-
-    }
 }
