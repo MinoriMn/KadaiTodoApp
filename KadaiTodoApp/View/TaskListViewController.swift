@@ -35,6 +35,11 @@ class TaskListViewController: UIViewController, ViewBase {
             .store(in: &cancellables)
     }
     
+    override func viewWillDisappear(_ animated: Bool){
+        viewModel.saveTasks()
+        super.viewWillDisappear(animated)
+    }
+    
     @IBAction private func onTapNewTaskButton (_ sender: UIButton) {
         let taskEditorStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = taskEditorStoryBoard.instantiateViewController(withIdentifier: "TaskEditor")

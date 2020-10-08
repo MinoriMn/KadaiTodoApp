@@ -26,5 +26,7 @@ class TaskListViewModel: ViewModelBase{
             .store(in: &cancellables)
     }
     
-    
+    public func saveTasks(){
+        taskModel.saveTasksToDB()
+    }
 }

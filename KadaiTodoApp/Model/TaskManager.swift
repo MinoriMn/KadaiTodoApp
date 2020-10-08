@@ -14,22 +14,39 @@ final class TaskManager: TaskManagerProtocol{
     @Published var tasks = [Task]()
     
     private init() {
-        loadTasksFromDB()
+        let _tasks = loadTasksFromDB()
+        tasks.append(contentsOf: _tasks)
     }
     
-    private func loadTasksFromDB(){
-        //TODO: storageからのTaskデータのロード
-        var _tasks: [Task] = []
-        
-        let tableData = ["水戸駅", "偕楽園駅", "日立駅", "土浦駅", "つくば駅", "研究学園駅"]
-        var dt: Date = Date()
-        for data in tableData {
-            dt = Calendar.current.date(byAdding: .day, value: -1, to: dt)!
-            let task = Task(creationTime: dt, title: data, detail: data + "_detail")
-            _tasks.append(task)
-        }
-        tasks.append(contentsOf: _tasks)
-        
+    deinit{
+        print("deinit called")
+    }
+    
+    private func loadTasksFromDB() -> [Task]{
+        //DEBUG
+//        var _tasks: [Task] = []
+//
+//        let tableData = ["水戸駅", "偕楽園駅", "日立駅", "土浦駅", "つくば駅", "研究学園駅"]
+//        var dt: Date = Date()
+//        for data in tableData {
+//            dt = Calendar.current.date(byAdding: .day, value: -1, to: dt)!
+//            let task = Task(creationTime: dt, title: data, detail: data + "_detail")
+//            _tasks.append(task)
+//        }
+
+        // storageからのTaskデータのロード
+        guard let data = UserDefaults.standard.data(forKey: "tasks")
+            else { return [] }
+        guard let _tasks = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Task]
+            else { return [] }
+        return _tasks
+    }
+    
+    func saveTasksToDB(){
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: tasks, requiringSecureCoding: false)
+            else { return }
+        UserDefaults.standard.set(data, forKey: "tasks")
+        UserDefaults.standard.synchronize()
     }
     
     public func getTasks() -> [Task] {
@@ -79,10 +96,28 @@ protocol TaskManagerProtocol {
     var tasks: [Task] { get set }
 }
 
-struct Task: Hashable {
+class Task: NSObject, NSCoding {
     let creationTime: Date!
     var title: String = ""
     var detail: String = ""
+    
+    init(creationTime: Date, title: String, detail: String) {
+        self.creationTime = creationTime
+        self.title = title
+        self.detail = detail
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.creationTime, forKey: "creationTime")
+        aCoder.encode(self.title, forKey: "title")
+        aCoder.encode(self.detail, forKey: "detail")
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        self.creationTime = aDecoder.decodeObject(forKey: "creationTime") as? Date
+        self.title = aDecoder.decodeObject(forKey: "title") as! String
+        self.detail = aDecoder.decodeObject(forKey: "detail") as! String
+    }
 }
 
 enum TaskError: Error{
