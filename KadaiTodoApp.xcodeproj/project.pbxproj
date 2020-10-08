@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C935D63E252C56ED003D852E /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935D63D252C56ED003D852E /* TaskManager.swift */; };
+		C935D641252D97CE003D852E /* CombineDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C935D640252D97CE003D852E /* CombineDataSources */; };
+		C935D644252ECEFA003D852E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935D643252ECEFA003D852E /* Alert.swift */; };
 		C9BF50CB2526C596008BA0A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50CA2526C596008BA0A1 /* AppDelegate.swift */; };
 		C9BF50CD2526C596008BA0A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50CC2526C596008BA0A1 /* SceneDelegate.swift */; };
 		C9BF50CF2526C596008BA0A1 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF50CE2526C596008BA0A1 /* TaskListViewController.swift */; };
@@ -40,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C935D63D252C56ED003D852E /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		C935D643252ECEFA003D852E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C9BF50C72526C596008BA0A1 /* KadaiTodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KadaiTodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BF50CA2526C596008BA0A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9BF50CC2526C596008BA0A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C935D641252D97CE003D852E /* CombineDataSources in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +92,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C935D63C252C5683003D852E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C935D63D252C56ED003D852E /* TaskManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C935D642252ECEEB003D852E /* Untility */ = {
+			isa = PBXGroup;
+			children = (
+				C935D643252ECEFA003D852E /* Alert.swift */,
+			);
+			path = Untility;
+			sourceTree = "<group>";
+		};
 		C9BF50BE2526C596008BA0A1 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +131,8 @@
 		C9BF50C92526C596008BA0A1 /* KadaiTodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				C935D642252ECEEB003D852E /* Untility */,
+				C935D63C252C5683003D852E /* Model */,
 				C9BF50FF2529A6B3008BA0A1 /* ViewModel */,
 				C9BF50FE2529A688008BA0A1 /* View */,
 				C9BF50CA2526C596008BA0A1 /* AppDelegate.swift */,
@@ -175,6 +199,9 @@
 			dependencies = (
 			);
 			name = KadaiTodoApp;
+			packageProductDependencies = (
+				C935D640252D97CE003D852E /* CombineDataSources */,
+			);
 			productName = KadaiTodoApp;
 			productReference = C9BF50C72526C596008BA0A1 /* KadaiTodoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -246,6 +273,9 @@
 				Base,
 			);
 			mainGroup = C9BF50BE2526C596008BA0A1;
+			packageReferences = (
+				C935D63F252D97CE003D852E /* XCRemoteSwiftPackageReference "CombineDataSources" */,
+			);
 			productRefGroup = C9BF50C82526C596008BA0A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -292,10 +322,12 @@
 				C9BF5103252AA780008BA0A1 /* ViewModelBase.swift in Sources */,
 				C9BF50CF2526C596008BA0A1 /* TaskListViewController.swift in Sources */,
 				C9BF50CB2526C596008BA0A1 /* AppDelegate.swift in Sources */,
+				C935D63E252C56ED003D852E /* TaskManager.swift in Sources */,
 				C9BF5101252AA732008BA0A1 /* TaskEditorViewModel.swift in Sources */,
 				C9BF50FB2526F34F008BA0A1 /* TaskListViewModel.swift in Sources */,
 				C9BF50CD2526C596008BA0A1 /* SceneDelegate.swift in Sources */,
 				C9BF50FD2529A4F1008BA0A1 /* TaskEditorViewController.swift in Sources */,
+				C935D644252ECEFA003D852E /* Alert.swift in Sources */,
 				C9BF5105252AA7F7008BA0A1 /* ViewBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +651,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C935D63F252D97CE003D852E /* XCRemoteSwiftPackageReference "CombineDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/combineopensource/CombineDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C935D640252D97CE003D852E /* CombineDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C935D63F252D97CE003D852E /* XCRemoteSwiftPackageReference "CombineDataSources" */;
+			productName = CombineDataSources;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C9BF50BF2526C596008BA0A1 /* Project object */;
 }

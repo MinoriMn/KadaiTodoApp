@@ -8,33 +8,37 @@
 import Combine
 
 class TaskEditorViewModel: ViewModelBase{
-//    let cancel: Subscribers.Sink<Void, Never>
-//    let ok: Subscribers.Sink<Void, Never>
+    private let taskModel = TaskManager.shared
+    
+    @Published var title: String! = "title__"
+    @Published var detail: String! = "detail__"
+    
+    @Published private(set) var canOK: Bool = false
     
     override init(){
-//        let _cancel = PassthroughSubject<Void, Never>()
-//        let _ok = PassthroughSubject<Void, Never>()
-//
-//        self.cancel = .init(receiveCompletion: { _cancel.send(completion: $0) }, receiveValue: { _cancel.send($0) })
-//        self.ok = .init(receiveCompletion: { _ok.send(completion: $0) }, receiveValue: { _ok.send($0) })
-        
         super.init()
-        
-//        let cancel = _cancel.sink{ _ in
-//
-//        }
-//        .store(in: &cancellables)
     }
     
-    func tappedCancelButton() -> Bool{
+    func cancel() -> Bool{
         //TODO: cancel確認
         print("cancel")
         return true
     }
     
-    func tappedOKButton() -> Bool{
-        //TODO: OK確認
-        print("ok")
-        return true
+    func addNewTask(_title: String, _detail: String) -> AnyPublisher<[Task], Error> {
+        return taskModel.addNewTask(title: _title, detail: _detail)
+        .handleEvents(receiveCompletion: { [weak self] completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure:
+                print("failure")
+            }
+        })
+        .eraseToAnyPublisher()
+    }
+    
+    func addNewTask(title: String, detail: String) {
+
     }
 }
