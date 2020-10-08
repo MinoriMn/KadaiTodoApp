@@ -19,9 +19,21 @@ class TaskEditorViewController: UIViewController, ViewBase {
     typealias ViewModel = TaskEditorViewModel
     let viewModel: ViewModel = TaskEditorViewModel()
 
+    var isNewTask = true //新規生成か否(既存編集)か
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 枠のカラー
+        detailTextView.layer.borderColor = UIColor.gray.cgColor
+        // 枠の幅
+        detailTextView.layer.borderWidth = 1.0
+        // 枠を角丸にする
+        detailTextView.layer.cornerRadius = 5.0
+        detailTextView.layer.masksToBounds = true
+
+
+        //DataBinding
         viewModel.$title
             .assign(to: \.text, on: titleTextField)
             .store(in: &cancellables)
@@ -31,40 +43,52 @@ class TaskEditorViewController: UIViewController, ViewBase {
         .store(in: &cancellables)
     }
 
+    func setEditTask(idx: Int){
+        isNewTask = false
+        viewModel.setEditTask(idx: idx)
+    }
+
     @IBAction private func onTapCancelButton (_ sender: UIButton) {
-        //TODO: 画面遷移もViewModelに移動するべきか？
         let cancel: Bool = viewModel.cancel()
         
         if cancel {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
+
     @IBAction private func onTapOKButton (_ sender: UIButton) {
-        //add new task
-        viewModel.addNewTask(_title: titleTextField.text ?? "", _detail: detailTextView.text ?? "")
-            .sink(receiveCompletion: { (completion) in
-                switch completion {
-                case .finished:
-                    // ここでは値を受け取れないが完了したことを伝えることはできる
+        let receiveCompletion: ((Subscribers.Completion<Error>) -> Void) = { (completion) in
+            switch completion {
+            case .finished:
+                // ここでは値を受け取れないが完了したことを伝えることはできる
+                break
+            case .failure(let error):
+                // エラーを受け取ることができる
+                switch error {
+                case TaskError.emptyTitle:
+                    alert(viewController: self, title: "入力エラー", message: "タイトルを入力してください")
                     break
-                case .failure(let error):
-                    // エラーを受け取ることができる
-                    switch error {
-                    case TaskError.emptyTitle:
-                        alert(viewController: self, title: "入力エラー", message: "タイトルを入力してください")
-                        break
-                    default:
-                        print("Error:", error)
-                    }
-                    break
+                default:
+                    print("Error:", error)
+                }
+                break
             }
-        }, receiveValue: { tasks in
+        }
+
+        let receiveValue: (([Task]) -> Void) = { tasks in
             self.dismiss(animated: true, completion: nil)
-        })
-        
-        //TODO: update task
-        
+        }
+
+        //add new task
+        if isNewTask{
+            //新規生成
+            viewModel.addNewTask(title: titleTextField.text ?? "", detail: detailTextView.text ?? "")
+                .sink(receiveCompletion: receiveCompletion, receiveValue: receiveValue)
+        }else{
+            //既存編集
+            viewModel.editTask(title: titleTextField.text ?? "", detail: detailTextView.text ?? "")
+                .sink(receiveCompletion: receiveCompletion, receiveValue: receiveValue)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
