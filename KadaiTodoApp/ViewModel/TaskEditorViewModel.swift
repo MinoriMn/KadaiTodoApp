@@ -10,10 +10,12 @@ import Combine
 class TaskEditorViewModel: ViewModelBase{
     private let taskModel = TaskManager.shared
     
-    @Published var title: String! = "title__"
-    @Published var detail: String! = "detail__"
+    @Published var title: String! = ""
+    @Published var detail: String! = ""
     
-    @Published private(set) var canOK: Bool = false
+    var editTaskIdx: Int = 0 //既存編集時のタスクインデックス
+
+//    @Published private(set) var canOK: Bool = false
     
     override init(){
         super.init()
@@ -25,16 +27,39 @@ class TaskEditorViewModel: ViewModelBase{
         return true
     }
     
-    func addNewTask(_title: String, _detail: String) -> AnyPublisher<[Task], Error> {
-        return taskModel.addNewTask(title: _title, detail: _detail)
-        .handleEvents(receiveCompletion: { [weak self] completion in
-            switch completion {
-            case .finished:
-                print("finished")
-            case .failure:
-                print("failure")
-            }
-        })
-        .eraseToAnyPublisher()
+    //新規生成
+    func addNewTask(title: String, detail: String) -> AnyPublisher<[Task], Error> {
+        return taskModel.addNewTask(title: title, detail: detail)
+            .handleEvents(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    print("finished")
+                case .failure:
+                    print("failure")
+                }
+            })
+            .eraseToAnyPublisher()
+    }
+
+    //既存編集
+    func editTask(title: String, detail: String) -> AnyPublisher<[Task], Error> {
+        return taskModel.editTask(idx: editTaskIdx, title: title, detail: detail)
+            .handleEvents(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    print("finished")
+                case .failure:
+                    print("failure")
+                }
+            })
+            .eraseToAnyPublisher()
+    }
+    //既存編集時のタスク呼び出し
+    func setEditTask(idx: Int){
+        editTaskIdx = idx
+
+        let task = taskModel.tasks[editTaskIdx]
+        title = task.title
+        detail = task.detail
     }
 }

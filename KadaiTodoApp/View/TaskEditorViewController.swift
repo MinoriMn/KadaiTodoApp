@@ -19,6 +19,8 @@ class TaskEditorViewController: UIViewController, ViewBase {
     typealias ViewModel = TaskEditorViewModel
     let viewModel: ViewModel = TaskEditorViewModel()
 
+    var isNewTask = true //新規生成か否(既存編集)か
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +43,11 @@ class TaskEditorViewController: UIViewController, ViewBase {
         .store(in: &cancellables)
     }
 
+    func setEditTask(idx: Int){
+        isNewTask = false
+        viewModel.setEditTask(idx: idx)
+    }
+
     @IBAction private func onTapCancelButton (_ sender: UIButton) {
         let cancel: Bool = viewModel.cancel()
         
@@ -48,29 +55,40 @@ class TaskEditorViewController: UIViewController, ViewBase {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
+
     @IBAction private func onTapOKButton (_ sender: UIButton) {
-        //add new task
-        viewModel.addNewTask(_title: titleTextField.text ?? "", _detail: detailTextView.text ?? "")
-            .sink(receiveCompletion: { (completion) in
-                switch completion {
-                case .finished:
-                    // ここでは値を受け取れないが完了したことを伝えることはできる
+        let receiveCompletion: ((Subscribers.Completion<Error>) -> Void) = { (completion) in
+            switch completion {
+            case .finished:
+                // ここでは値を受け取れないが完了したことを伝えることはできる
+                break
+            case .failure(let error):
+                // エラーを受け取ることができる
+                switch error {
+                case TaskError.emptyTitle:
+                    alert(viewController: self, title: "入力エラー", message: "タイトルを入力してください")
                     break
-                case .failure(let error):
-                    // エラーを受け取ることができる
-                    switch error {
-                    case TaskError.emptyTitle:
-                        alert(viewController: self, title: "入力エラー", message: "タイトルを入力してください")
-                        break
-                    default:
-                        print("Error:", error)
-                    }
-                    break
+                default:
+                    print("Error:", error)
+                }
+                break
             }
-        }, receiveValue: { tasks in
+        }
+
+        let receiveValue: (([Task]) -> Void) = { tasks in
             self.dismiss(animated: true, completion: nil)
-        })
+        }
+
+        //add new task
+        if isNewTask{
+            //新規生成
+            viewModel.addNewTask(title: titleTextField.text ?? "", detail: detailTextView.text ?? "")
+                .sink(receiveCompletion: receiveCompletion, receiveValue: receiveValue)
+        }else{
+            //既存編集
+            viewModel.editTask(title: titleTextField.text ?? "", detail: detailTextView.text ?? "")
+                .sink(receiveCompletion: receiveCompletion, receiveValue: receiveValue)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

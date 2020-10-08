@@ -59,6 +59,16 @@ class TaskDetailViewController: UIViewController, ViewBase {
     }
     
     @IBAction private func onTapEditButton (_ sender: UIButton) {
+        let enableEdit: Bool = viewModel.editTask()
+
+        if enableEdit {
+            let taskEditorStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = taskEditorStoryBoard.instantiateViewController(identifier: "TaskEditor")//TODO: snapkitを使用してstoryboardを廃止する
+    //        let viewController = TaskDetailViewController(taskIdx: indexPath.row)
+            //TODO: ↓多分良くないので要改善
+            (viewController as! TaskEditorViewController).setEditTask(idx: taskIdx)
+            self.present(viewController, animated: true, completion: nil)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -38,9 +38,9 @@ class TaskDetailViewModel: ViewModelBase{
         self.taskIdx = idx
     }
     
-//    func editTask() {
-//        
-//    }
+    func editTask() -> Bool {
+        return true
+    }
     
     func deleteTask() -> AnyPublisher<Void, Error> {
         deleteFlag = true
