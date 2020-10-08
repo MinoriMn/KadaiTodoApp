@@ -36,9 +36,18 @@ final class TaskManager: TaskManagerProtocol{
         return tasks
     }
     
-    public func addNewTask(title: String, detail: String){
-        let dt: Date = Date()
-        tasks.append(Task(creationTime: dt, title: title, detail: detail))
+    public func addNewTask(title: String, detail: String) -> Future<[Task], Error>{
+        return Future<[Task], Error>{ promise in
+            if title.isEmpty || title == "" {
+                promise(.failure(TaskError.emptyTitle))
+            }else{
+                let dt: Date = Date()
+                self.tasks.append(Task(creationTime: dt, title: title, detail: detail))
+                promise(.success(self.tasks))
+                
+                print("tasksC:", self.tasks.count)
+            }
+        }
     }
     
     public func editTask(idx: Int, title: String, detail: String){
@@ -60,4 +69,8 @@ struct Task: Hashable {
     let creationTime: Date!
     var title: String = ""
     var detail: String = ""
+}
+
+enum TaskError: Error{
+    case emptyTitle
 }
