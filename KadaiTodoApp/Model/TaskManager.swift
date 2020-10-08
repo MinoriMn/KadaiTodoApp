@@ -56,8 +56,15 @@ final class TaskManager: TaskManagerProtocol{
         task.detail = detail
     }
     
-    public func deleteTask(idx: Int){
-        tasks.remove(at: idx)
+    public func deleteTask(idx: Int) -> Future<Void, Error>{
+        return Future<Void, Error>{ promise in
+            if idx >= self.tasks.count {
+                promise(.failure(TaskError.notExsitIdx))
+            }else{
+                self.tasks.remove(at: idx)
+                promise(.success(Void()))
+            }
+        }
     }
 }
 
@@ -73,4 +80,5 @@ struct Task: Hashable {
 
 enum TaskError: Error{
     case emptyTitle
+    case notExsitIdx
 }

@@ -175,5 +175,81 @@
             </objects>
             <point key="canvasLocation" x="956" y="131"/>
         </scene>
+        <!--TaskDetail-->
+        <scene sceneID="0Yl-pF-XG5">
+            <objects>
+                <viewController storyboardIdentifier="TaskDetail" title="TaskDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rZN-6u-c8V" customClass="TaskDetailViewController" customModule="KadaiTodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IXB-Dp-Bly">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgz-V5-81x">
+                                <rect key="frame" x="20" y="64" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00l-hQ-JiT">
+                                <rect key="frame" x="20" y="782" width="183" height="60"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="bPJ-9b-zSn"/>
+                                </constraints>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapCancelButton:" destination="uih-hS-PlF" eventType="touchDown" id="xdu-q6-VgC"/>
+                                    <action selector="onTapDeleteButton:" destination="rZN-6u-c8V" eventType="touchDown" id="G9o-69-vAG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWx-xG-Nlx">
+                                <rect key="frame" x="211" y="782" width="183" height="60"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapEditButton:" destination="rZN-6u-c8V" eventType="touchDown" id="cmb-Xk-cUl"/>
+                                    <action selector="onTapOKButton:" destination="uih-hS-PlF" eventType="touchDown" id="GJX-O2-5OS"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dlf-Oc-y3W" userLabel="Detail">
+                                <rect key="frame" x="20" y="118" width="374" height="644"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dWx-xG-Nlx" firstAttribute="leading" secondItem="00l-hQ-JiT" secondAttribute="trailing" constant="8" id="2kt-BE-CZN"/>
+                            <constraint firstItem="00l-hQ-JiT" firstAttribute="top" secondItem="dlf-Oc-y3W" secondAttribute="bottom" constant="20" id="3hJ-3O-k65"/>
+                            <constraint firstItem="00l-hQ-JiT" firstAttribute="leading" secondItem="2sa-9M-kxc" secondAttribute="leading" constant="20" id="7iT-54-eoP"/>
+                            <constraint firstItem="Bgz-V5-81x" firstAttribute="top" secondItem="2sa-9M-kxc" secondAttribute="top" constant="20" id="FdH-do-gFG"/>
+                            <constraint firstItem="2sa-9M-kxc" firstAttribute="trailing" secondItem="dWx-xG-Nlx" secondAttribute="trailing" constant="20" id="HgL-Jw-nLW"/>
+                            <constraint firstItem="dWx-xG-Nlx" firstAttribute="width" secondItem="00l-hQ-JiT" secondAttribute="width" id="KEt-30-SL6"/>
+                            <constraint firstItem="dWx-xG-Nlx" firstAttribute="height" secondItem="00l-hQ-JiT" secondAttribute="height" id="UaD-b9-iDf"/>
+                            <constraint firstItem="dlf-Oc-y3W" firstAttribute="leading" secondItem="2sa-9M-kxc" secondAttribute="leading" constant="20" id="YAf-AT-F34"/>
+                            <constraint firstItem="dlf-Oc-y3W" firstAttribute="top" secondItem="Bgz-V5-81x" secondAttribute="bottom" constant="20" id="bW3-zZ-3fk"/>
+                            <constraint firstItem="2sa-9M-kxc" firstAttribute="trailing" secondItem="Bgz-V5-81x" secondAttribute="trailing" constant="20" id="h6d-p3-UFU"/>
+                            <constraint firstItem="dWx-xG-Nlx" firstAttribute="centerY" secondItem="00l-hQ-JiT" secondAttribute="centerY" id="iyU-0D-cko"/>
+                            <constraint firstItem="2sa-9M-kxc" firstAttribute="bottom" secondItem="00l-hQ-JiT" secondAttribute="bottom" constant="20" id="kDD-fm-xvQ"/>
+                            <constraint firstItem="2sa-9M-kxc" firstAttribute="trailing" secondItem="dlf-Oc-y3W" secondAttribute="trailing" constant="20" id="oa2-E9-40M"/>
+                            <constraint firstItem="Bgz-V5-81x" firstAttribute="leading" secondItem="2sa-9M-kxc" secondAttribute="leading" constant="20" id="rxO-1a-muo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2sa-9M-kxc"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailTextView" destination="dlf-Oc-y3W" id="zth-jx-IHt"/>
+                        <outlet property="titleLabel" destination="Bgz-V5-81x" id="mAR-tD-Air"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSa-jD-gaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1786" y="133"/>
+        </scene>
     </scenes>
 </document>

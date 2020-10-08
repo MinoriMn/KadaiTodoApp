@@ -47,7 +47,16 @@ class TaskListViewController: UIViewController, ViewBase {
 
 //テーブルのイベントを管理する
 extension TaskListViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // タップされたセルの行番号を出力
+        //TODO: 画面遷移もViewModelに移動するべきか？
+        let taskDetailStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = taskDetailStoryBoard.instantiateViewController(identifier: "TaskDetail")//TODO: snapkitを使用してstoryboardを廃止する
+//        let viewController = TaskDetailViewController(taskIdx: indexPath.row)
+        //TODO: 多分良くない
+        (viewController as! TaskDetailViewController).taskIdx = indexPath.row
+        self.present(viewController, animated: true, completion: nil)
+    }
 }
 
 //TableViewCell
