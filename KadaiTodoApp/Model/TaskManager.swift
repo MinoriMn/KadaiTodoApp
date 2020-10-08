@@ -11,7 +11,7 @@ import Combine
 final class TaskManager: TaskManagerProtocol{
     static let shared = TaskManager()
     
-    var tasks = [Task]()
+    @Published var tasks = [Task]()
     
     private init() {
         loadTasksFromDB()
@@ -45,7 +45,7 @@ final class TaskManager: TaskManagerProtocol{
                 self.tasks.append(Task(creationTime: dt, title: title, detail: detail))
                 promise(.success(self.tasks))
                 
-                print("tasksC:", self.tasks.count)
+                print("count:", self.tasks.count)
             }
         }
     }

@@ -18,7 +18,13 @@ class TaskListViewModel: ViewModelBase{
     }
     
     private func getTasks(){
-        tasks = taskModel.getTasks()
+        //apply model tasks (include updating)
+        //TODO: tasksには変更分だけ伝播させるのが望ましい
+        taskModel.$tasks
+            .sink(receiveValue: { tasks in
+                self.tasks = tasks
+            })
+            .store(in: &cancellables)
     }
     
     
