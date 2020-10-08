@@ -23,4 +23,8 @@ class TaskEditorViewModel: ViewModelBase{
         print("ok")
         return true
     }
+    
+    func addNewTask(title: String, detail: String){
+
+    }
 }

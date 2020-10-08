@@ -24,7 +24,7 @@ final class TaskManager: TaskManagerProtocol{
         let tableData = ["水戸駅", "偕楽園駅", "日立駅", "土浦駅", "つくば駅", "研究学園駅"]
         var dt: Date = Date()
         for data in tableData {
-            dt = Calendar.current.date(byAdding: .day, value: 1, to: dt)!
+            dt = Calendar.current.date(byAdding: .day, value: -1, to: dt)!
             let task = Task(creationTime: dt, title: data, detail: data + "_detail")
             _tasks.append(task)
         }
@@ -37,11 +37,18 @@ final class TaskManager: TaskManagerProtocol{
     }
     
     public func addNewTask(title: String, detail: String){
-        
+        let dt: Date = Date()
+        tasks.append(Task(creationTime: dt, title: title, detail: detail))
     }
     
-    public func editTask(id: Int, title: String, detail: String){
-        
+    public func editTask(idx: Int, title: String, detail: String){
+        var task = tasks[idx]
+        task.title = title
+        task.detail = detail
+    }
+    
+    public func deleteTask(idx: Int){
+        tasks.remove(at: idx)
     }
 }
 
