@@ -33,12 +33,22 @@ class TaskEditorViewController: UIViewController, ViewBase {
     }
     
     @IBAction private func onTapOKButton (_ sender: UIButton) {
+        //Validation Check
+        if titleTextField.text?.isEmpty ?? false {
+            alert(viewController: self, title: "入力エラー", message: "タイトルを入力してください")
+            return
+        }
+        
         //TODO: 画面遷移もViewModelに移動するべきか？
         let ok: Bool = viewModel.tappedOKButton()
         
         if ok {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 
