@@ -28,28 +28,23 @@ class TaskDetailViewController: UIViewController, ViewBase {
 //        fatalError("init(coder:) has not been implemented")
 //    }
     
-    
-     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         viewModel = TaskDetailViewModel(taskIdx: taskIdx)
-        
+
         viewModel.setTaskIdx(idx: taskIdx)
-        
+
         viewModel.$title
             .assign(to: \.text, on: titleLabel)
             .store(in: &cancellables)
-        
+
         viewModel.$detail
             .assign(to: \.text, on: detailTextView)
             .store(in: &cancellables)
-        
-        
     }
 
     @IBAction private func onTapDeleteButton (_ sender: UIButton) {
-        //TODO: 画面遷移もViewModelに移動するべきか？
         viewModel.deleteTask()
             .sink(receiveCompletion: { completion in
                 switch completion {

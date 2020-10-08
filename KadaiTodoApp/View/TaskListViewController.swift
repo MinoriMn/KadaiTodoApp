@@ -15,7 +15,6 @@ class TaskListViewController: UIViewController, ViewBase {
     @IBOutlet var taskList: UITableView!
 //    @IBOutlet var newTaskButton: UIButton!
     
-    //DEBUG: ↓追加　<テーブル表示データ>
     typealias ViewModel = TaskListViewModel
     let viewModel: ViewModel = TaskListViewModel()
 
@@ -37,7 +36,6 @@ class TaskListViewController: UIViewController, ViewBase {
     }
     
     @IBAction private func onTapNewTaskButton (_ sender: UIButton) {
-        //TODO: 画面遷移もViewModelに移動するべきか？
         let taskEditorStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = taskEditorStoryBoard.instantiateViewController(withIdentifier: "TaskEditor")
         viewController.modalPresentationStyle = .fullScreen
@@ -49,11 +47,10 @@ class TaskListViewController: UIViewController, ViewBase {
 extension TaskListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // タップされたセルの行番号を出力
-        //TODO: 画面遷移もViewModelに移動するべきか？
         let taskDetailStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = taskDetailStoryBoard.instantiateViewController(identifier: "TaskDetail")//TODO: snapkitを使用してstoryboardを廃止する
 //        let viewController = TaskDetailViewController(taskIdx: indexPath.row)
-        //TODO: 多分良くない
+        //TODO: ↓多分良くないので要改善
         (viewController as! TaskDetailViewController).taskIdx = indexPath.row
         self.present(viewController, animated: true, completion: nil)
     }

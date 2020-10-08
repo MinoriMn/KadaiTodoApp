@@ -41,7 +41,7 @@ class TaskDetailViewModel: ViewModelBase{
 //    func editTask() {
 //        
 //    }
-//    
+    
     func deleteTask() -> AnyPublisher<Void, Error> {
         deleteFlag = true
         return taskModel.deleteTask(idx: taskIdx)

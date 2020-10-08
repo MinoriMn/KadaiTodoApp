@@ -32,7 +32,6 @@ class TaskEditorViewController: UIViewController, ViewBase {
     }
 
     @IBAction private func onTapCancelButton (_ sender: UIButton) {
-        //TODO: 画面遷移もViewModelに移動するべきか？
         let cancel: Bool = viewModel.cancel()
         
         if cancel {
