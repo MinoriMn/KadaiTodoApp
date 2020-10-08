@@ -33,9 +33,9 @@ class TaskEditorViewModel: ViewModelBase{
             .handleEvents(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
-                    print("finished")
+                    print("add finished")
                 case .failure:
-                    print("failure")
+                    print("add failure")
                 }
             })
             .eraseToAnyPublisher()
@@ -47,9 +47,9 @@ class TaskEditorViewModel: ViewModelBase{
             .handleEvents(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
-                    print("finished")
+                    print("edit finished")
                 case .failure:
-                    print("failure")
+                    print("edit failure")
                 }
             })
             .eraseToAnyPublisher()

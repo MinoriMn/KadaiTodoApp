@@ -32,6 +32,8 @@ class TaskDetailViewModel: ViewModelBase{
                 }
             })
             .store(in: &cancellables)
+        
+        print("cancels:", cancellables.count)
     }
     
     public func setTaskIdx(idx: Int){
@@ -48,10 +50,10 @@ class TaskDetailViewModel: ViewModelBase{
         .handleEvents(receiveCompletion: { [weak self] completion in
             switch completion {
             case .finished:
-                print("finished")
+                print("delete finished")
             case .failure:
                 self?.deleteFlag = false
-                print("failure")
+                print("delete failure")
             }
         })
         .eraseToAnyPublisher()
