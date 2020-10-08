@@ -10,20 +10,15 @@ import Combine
 
 class TaskListViewModel: ViewModelBase{
     private let taskModel = TaskManager.shared
-    @Published var tasksPublisher: AnyPublisher<[Task], Never>
+    @Published var tasks = [Task]()
     
     override init() {
-        print("called2")
-        tasksPublisher = taskModel.tasks
-            .eraseToAnyPublisher()
-            
         super.init()
-        
-        tasksPublisher.sink(receiveValue: {tasks in
-            for task in tasks{
-                print("t:" + task.title)
-            }
-        })
+        getTasks()
+    }
+    
+    private func getTasks(){
+        tasks = taskModel.getTasks()
     }
     
     
