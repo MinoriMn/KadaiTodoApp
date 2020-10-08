@@ -44,20 +44,34 @@ final class TaskManager: TaskManagerProtocol{
                 let dt: Date = Date()
                 self.tasks.append(Task(creationTime: dt, title: title, detail: detail))
                 promise(.success(self.tasks))
-                
-                print("count:", self.tasks.count)
+//                print("count:", self.tasks.count)
             }
         }
     }
     
-    public func editTask(idx: Int, title: String, detail: String){
-        var task = tasks[idx]
-        task.title = title
-        task.detail = detail
+    public func editTask(idx: Int, title: String, detail: String) -> Future<[Task], Error>{
+        return Future<[Task], Error>{ promise in
+            if title.isEmpty || title == "" {
+                promise(.failure(TaskError.emptyTitle))
+            }else{
+                var task = self.tasks[idx]
+                task.title = title
+                task.detail = detail
+                self.tasks[idx] = task
+                promise(.success(self.tasks))
+            }
+        }
     }
     
-    public func deleteTask(idx: Int){
-        tasks.remove(at: idx)
+    public func deleteTask(idx: Int) -> Future<Void, Error>{
+        return Future<Void, Error>{ promise in
+            if idx >= self.tasks.count {
+                promise(.failure(TaskError.notExsitIdx))
+            }else{
+                self.tasks.remove(at: idx)
+                promise(.success(Void()))
+            }
+        }
     }
 }
 
@@ -73,4 +87,5 @@ struct Task: Hashable {
 
 enum TaskError: Error{
     case emptyTitle
+    case notExsitIdx
 }
