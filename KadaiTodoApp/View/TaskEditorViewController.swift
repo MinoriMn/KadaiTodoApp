@@ -22,6 +22,16 @@ class TaskEditorViewController: UIViewController, ViewBase {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 枠のカラー
+        detailTextView.layer.borderColor = UIColor.gray.cgColor
+        // 枠の幅
+        detailTextView.layer.borderWidth = 1.0
+        // 枠を角丸にする
+        detailTextView.layer.cornerRadius = 5.0
+        detailTextView.layer.masksToBounds = true
+
+
+        //DataBinding
         viewModel.$title
             .assign(to: \.text, on: titleTextField)
             .store(in: &cancellables)
