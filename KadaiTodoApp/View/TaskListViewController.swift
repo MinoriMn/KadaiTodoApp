@@ -18,6 +18,8 @@ class TaskListViewController: UIViewController, ViewBase {
     typealias ViewModel = TaskListViewModel
     let viewModel: ViewModel = TaskListViewModel()
 
+    var detailViewCotroller: TaskDetailViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +35,10 @@ class TaskListViewController: UIViewController, ViewBase {
         viewModel.$tasks
             .bind(subscriber: taskList.rowsSubscriber(itemsController))
             .store(in: &cancellables)
+
+        let taskDetailStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = taskDetailStoryBoard.instantiateViewController(identifier: "TaskDetail")//TODO: snapkitを使用してstoryboardを廃止する
+        detailViewCotroller = viewController as? TaskDetailViewController
     }
     
     override func viewWillDisappear(_ animated: Bool){
@@ -52,12 +58,11 @@ class TaskListViewController: UIViewController, ViewBase {
 extension TaskListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // タップされたセルの行番号を出力
-        let taskDetailStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = taskDetailStoryBoard.instantiateViewController(identifier: "TaskDetail")//TODO: snapkitを使用してstoryboardを廃止する
-//        let viewController = TaskDetailViewController(taskIdx: indexPath.row)
         //TODO: ↓多分良くないので要改善
-        (viewController as! TaskDetailViewController).taskIdx = indexPath.row
-        self.present(viewController, animated: true, completion: nil)
+        if detailViewCotroller != nil{
+            detailViewCotroller!.taskIdx = indexPath.row
+            self.present(detailViewCotroller!, animated: true, completion: nil)
+        }
     }
 }
 

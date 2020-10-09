@@ -13,7 +13,7 @@ class TaskDetailViewModel: ViewModelBase{
     @Published var title: String! = "title__"
     @Published var detail: String! = "detail__"
     
-    @Published var taskIdx: Int = 0
+    @Published var taskIdx: Int = -1
     
     private var deleteFlag = false
     
@@ -24,16 +24,16 @@ class TaskDetailViewModel: ViewModelBase{
         
         self.taskIdx = taskIdx
         
-        taskModel.$tasks
-            .sink(receiveValue: { tasks in
-                if !self.deleteFlag {//Delete時のout of index対策
-                    self.title = tasks[self.taskIdx].title
-                    self.detail = tasks[self.taskIdx].detail
-                }
-            })
-            .store(in: &cancellables)
-        
-        print("cancels:", cancellables.count)
+        if taskIdx != -1{
+            taskModel.$tasks
+                .sink(receiveValue: { tasks in
+                    if !self.deleteFlag {//Delete時のout of index対策
+                        self.title = tasks[self.taskIdx].title
+                        self.detail = tasks[self.taskIdx].detail
+                    }
+                })
+                .store(in: &cancellables)
+        }
     }
     
     public func setTaskIdx(idx: Int){
