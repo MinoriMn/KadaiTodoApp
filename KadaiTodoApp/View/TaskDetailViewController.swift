@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class TaskDetailViewController: UIViewController, ViewBase {
-    var taskIdx: Int = 0
+    var taskIdx: Int = -1
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var detailTextView: UITextView!
@@ -17,7 +17,7 @@ class TaskDetailViewController: UIViewController, ViewBase {
     var cancellables = Set<AnyCancellable>()
 
     typealias ViewModel = TaskDetailViewModel
-    var viewModel: ViewModel = TaskDetailViewModel(taskIdx: 0)//TODO: storyboardを使っている為こうするしかないので、snapkitを使用し解消する
+    var viewModel: ViewModel = TaskDetailViewModel(taskIdx: -1)//TODO: storyboardを使っている為こうするしかないので、snapkitを使用し解消する
     
 //    init(taskIdx: Int){
 //        viewModel = TaskDetailViewModel(taskIdx: taskIdx)
